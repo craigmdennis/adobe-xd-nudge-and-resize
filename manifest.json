@@ -1,0 +1,85 @@
+{
+   "name": "Nudge and Resize",
+   "id": "496C88A7",
+   "version":"1",
+   "description":"Resize and nudge just like other design tools.",
+   "icons":[
+      {
+         "width":96,
+         "height":96,
+         "path":"images/nudge-and-resize-icon.png"
+      }
+   ],
+   "host":{
+      "app":"XD",
+      "minVersion":"13.0.0"
+   },
+   "uiEntryPoints":[
+      {
+         "type":"menu",
+         "label":"Nudge and Resize",
+         "menuItems": [
+            {
+               "type":"menu",
+               "label":"Large Nudge Up",
+               "commandId": "LargeNudgeUp"
+            },
+            {
+               "type":"menu",
+               "label":"Large Nudge Right",
+               "commandId": "LargeNudgeRight"
+            },
+            {
+               "type":"menu",
+               "label":"Large Nudge Down",
+               "commandId": "LargeNudgeDown"
+            },
+            {
+               "type":"menu",
+               "label":"Large Nudge Left",
+               "commandId": "LargeNudgeLeft"
+            },
+            {
+               "type":"menu",
+               "label":"Shrink Width",
+               "commandId": "ShrinkWidth"
+            },
+            {
+               "type":"menu",
+               "label":"Shrink Height",
+               "commandId": "ShrinkHeight"
+            },
+            {
+               "type":"menu",
+               "label":"Extend Width",
+               "commandId": "ExtendWidth"
+            },
+            {
+               "type":"menu",
+               "label":"Extend Height",
+               "commandId": "ExtendHeight"
+            },
+            {
+               "type":"menu",
+               "label":"Large Shrink Width",
+               "commandId": "LargeShrinkWidth"
+            },
+            {
+               "type":"menu",
+               "label":"Large Shrink Height",
+               "commandId": "LargeShrinkHeight"
+            },
+            {
+               "type":"menu",
+               "label":"Large Extend Width",
+               "commandId": "LargeExtendWidth"
+            },
+            {
+               "type":"menu",
+               "label":"Large Extend Height",
+               "commandId": "LargeExtendHeight"
+            }
+         ]
+      }
+   ]
+}
