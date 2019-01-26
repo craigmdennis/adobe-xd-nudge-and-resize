@@ -1,7 +1,13 @@
-// Large Nudge Config
-const config = {
+const { prompt } = require("./lib/dialogs.js");
+const fs = require("uxp").storage.localFileSystem;
+
+// Set the default preferences
+let prefs = {
     largeNudge: 8
 }
+
+// Read preferences
+readPrefs();
 
 // Small Resize
 function shrinkWidth(selection) {
@@ -19,33 +25,41 @@ function extendHeight(selection) {
 
 // Large Resize
 function largeShrinkWidth(selection) {
-    objectResize(selection.items, 'width', -config.largeNudge);
+    objectResize(selection.items, 'width', -prefs.largeNudge);
 }
 function largeExtendWidth(selection) {
-    objectResize(selection.items, 'width', config.largeNudge);
+    objectResize(selection.items, 'width', +prefs.largeNudge);
 }
 function largeShrinkHeight(selection) {
-    objectResize(selection.items, 'height', -config.largeNudge);
+    objectResize(selection.items, 'height', -prefs.largeNudge);
 }
 function largeExtendHeight(selection) {
-    objectResize(selection.items, 'height', config.largeNudge);
+    objectResize(selection.items, 'height', +prefs.largeNudge);
 }
 
 //  Nudging
 function largeNudgeUp(selection) {
-    objectResize(selection.items, 'up', config.largeNudge);
+    selection.items.forEach(function (obj) {
+        obj.moveInParentCoordinates(0, -prefs.largeNudge);
+    });
 }
 function largeNudgeRight(selection) {
-    objectResize(selection.items, 'right', config.largeNudge);
+    selection.items.forEach(function (obj) {
+        obj.moveInParentCoordinates(+prefs.largeNudge, 0);
+    });
 }
 function largeNudgeDown(selection) {
-    objectResize(selection.items, 'down', config.largeNudge);
+    selection.items.forEach(function (obj) {
+        obj.moveInParentCoordinates(0, +prefs.largeNudge);
+    });
 }
 function largeNudgeLeft(selection) {
-    objectResize(selection.items, 'left', config.largeNudge);
+    selection.items.forEach(function (obj) {
+        obj.moveInParentCoordinates(-prefs.largeNudge, 0);
+    });
 }
 
-// main
+// Resize Function
 function objectResize(selection, command, shift) {
     if (0 === selection.length) {
         console.error('No element selected.')
@@ -65,29 +79,74 @@ function objectResize(selection, command, shift) {
             obj.resize(bounds.width, bounds.height + shift);
         });
     }
+}
 
-    if('up' === command) {
-        selection.forEach(function (obj) {
-            obj.moveInParentCoordinates(0, -config.largeNudge);
-        });
+// Safe user preferences
+async function savePrefs() {
+    
+    // Get the plugin data folder
+    const settingsFolder = await fs.getDataFolder();
+
+    try {
+
+        // Create or replace the settings.json file
+        const settingsFile = await settingsFolder.createFile("settings.json", {overwrite: true});
+        await settingsFile.write(JSON.stringify(prefs));
+
+    } catch(err) {
+
+        // Log the error
+        console.error(err);
     }
+}
 
-    if('right' === command) {
-        selection.forEach(function (obj) {
-            obj.moveInParentCoordinates(config.largeNudge, 0);
-        });
+// Read user preferences
+async function readPrefs() {
+
+    // Get the plugin data folder
+    const settingsFolder = await fs.getDataFolder();
+
+    try {
+
+        // Get the settings.json file
+        const settingsFile = await settingsFolder.getEntry("settings.json");
+
+        // Read the contents of the settings.json file
+        prefs = JSON.parse(await settingsFile.read());
+
+    } catch(err) {
+        // Error can ocurr if file doesn't exist yet
+        // Log the error
+        console.error(err);
+
+        // Save user preferences to settings.json
+        savePrefs();
     }
+}
 
-    if('down' === command) {
-        selection.forEach(function (obj) {
-            obj.moveInParentCoordinates(0, config.largeNudge);
-        });
-    }
+// Settings Dialog
+async function showNudgeSettingsDialog() {
 
-    if('left' === command) {
-        selection.forEach(function (obj) {
-            obj.moveInParentCoordinates(-config.largeNudge, 0);
-        });
+    // Contruct the prompt
+    const feedback = await prompt(
+        "Set a nudge value", //[title]
+        "Set the value in pixels that you want the large nudge and large resize to use.", //[msg]
+        prefs.largeNudge,  //[prompt]
+        ['Cancel', 'Save']);
+
+    // Detect user action
+    switch (feedback.which) {
+        case 0:
+            // User canceled
+            break;
+        case 1:
+            // User confirmed
+            // Get the value the user submitted
+            prefs.largeNudge = feedback.value;
+
+            // Save user preferences to settings.json
+            savePrefs();
+            break;
     }
 }
 
@@ -104,6 +163,7 @@ module.exports = {
         "LargeNudgeUp": largeNudgeUp,
         "LargeNudgeRight": largeNudgeRight,
         "LargeNudgeDown": largeNudgeDown,
-        "LargeNudgeLeft": largeNudgeLeft
+        "LargeNudgeLeft": largeNudgeLeft,
+        "ShowNudgeSettingsDialog": showNudgeSettingsDialog,
     }
 };

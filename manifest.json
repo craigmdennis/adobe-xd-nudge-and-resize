@@ -2,7 +2,7 @@
    "name": "Nudge and Resize",
    "id": "496C88A7",
    "author": "Craig Dennis",
-   "version":"1",
+   "version":"1.1.0",
    "description":"Adds menu items for nudging and resizing objects (currently by 8px) so they can be controlled by keyboard shortcuts.",
    "icons":[
       {
@@ -18,7 +18,7 @@
    "uiEntryPoints":[
       {
          "type":"menu",
-         "label":"Nudge and Resize",
+         "label":"Nudge & Resize",
          "menuItems": [
             {
                "type":"menu",
@@ -79,7 +79,12 @@
                "type":"menu",
                "label":"Large Extend Height",
                "commandId": "LargeExtendHeight"
-            }
+            },
+            {
+               "type": "menu",
+               "label": "Settings…",
+               "commandId": "ShowNudgeSettingsDialog"
+             }
          ]
       }
    ]
