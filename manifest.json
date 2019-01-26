@@ -1,8 +1,9 @@
 {
    "name": "Nudge and Resize",
    "id": "496C88A7",
+   "author": "Craig Dennis",
    "version":"1",
-   "description":"Resize and nudge just like other design tools.",
+   "description":"Adds menu items for nudging and resizing objects (currently by 8px) so they can be controlled by keyboard shortcuts.",
    "icons":[
       {
          "width":96,
