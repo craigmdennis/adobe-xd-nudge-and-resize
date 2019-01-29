@@ -2,13 +2,13 @@
    "name": "Nudge and Resize",
    "id": "496C88A7",
    "author": "Craig Dennis",
-   "version":"1.1.0",
-   "description":"Adds menu items for nudging and resizing objects (currently by 8px) so they can be controlled by keyboard shortcuts.",
+   "version":"1.1.1",
+   "description":"Add menu items for nudging and resizing objects (8px by default) so they can be controlled by keyboard shortcuts.",
    "icons":[
       {
          "width":96,
          "height":96,
-         "path":"images/nudge-and-resize-icon.png"
+         "path":"images/nudge-and-resize-icon@2x.png"
       }
    ],
    "host":{
