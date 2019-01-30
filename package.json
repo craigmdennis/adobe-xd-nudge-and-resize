@@ -1,6 +1,6 @@
 {
   "name": "adobe-xd-nudge-and-resize",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Add menu items for nudging and resizing objects (8px by default) so they can be controlled by keyboard shortcuts.",
   "main": "main.js",
   "directories": {
