@@ -2,7 +2,7 @@
   "name": "Nudge and Resize",
   "id": "496c8ba7",
   "author": "Craig Dennis",
-  "version":"1.1.3",
+  "version":"1.1.4",
   "description":"Add menu items for nudging and resizing objects (8px by default) so they can be controlled by keyboard shortcuts.",
   "icons":[
     {
@@ -23,62 +23,98 @@
         {
           "type":"menu",
           "label":"Large Nudge Up",
-          "commandId": "LargeNudgeUp"
+          "commandId": "LargeNudgeUp",
+          "shortcut": {
+            "win": "Shift+alt+8"
+          }
         },
         {
           "type":"menu",
           "label":"Large Nudge Right",
-          "commandId": "LargeNudgeRight"
+          "commandId": "LargeNudgeRight",
+          "shortcut": {
+            "win": "Shift+alt+6"
+          }
         },
         {
           "type":"menu",
           "label":"Large Nudge Down",
-          "commandId": "LargeNudgeDown"
+          "commandId": "LargeNudgeDown",
+          "shortcut": {
+            "win": "Shift+alt+2"
+          }
         },
         {
           "type":"menu",
           "label":"Large Nudge Left",
-          "commandId": "LargeNudgeLeft"
+          "commandId": "LargeNudgeLeft",
+          "shortcut": {
+            "win": "Shift+alt+4"
+          }
         },
         {
           "type":"menu",
           "label":"Shrink Width",
-          "commandId": "ShrinkWidth"
+          "commandId": "ShrinkWidth",
+          "shortcut": {
+            "win": "Ctrl+alt+4"
+          }
         },
         {
           "type":"menu",
           "label":"Shrink Height",
-          "commandId": "ShrinkHeight"
+          "commandId": "ShrinkHeight",
+          "shortcut": {
+            "win": "Ctrl+alt+8"
+          }
         },
         {
           "type":"menu",
           "label":"Extend Width",
-          "commandId": "ExtendWidth"
+          "commandId": "ExtendWidth",
+          "shortcut": {
+            "win": "Ctrl+alt+6"
+          }
         },
         {
           "type":"menu",
           "label":"Extend Height",
-          "commandId": "ExtendHeight"
+          "commandId": "ExtendHeight",
+          "shortcut": {
+            "win": "Ctrl+alt+2"
+          }
         },
         {
           "type":"menu",
           "label":"Large Shrink Width",
-          "commandId": "LargeShrinkWidth"
+          "commandId": "LargeShrinkWidth",
+          "shortcut": {
+            "win": "Ctrl+alt+Shift+4"
+          }
         },
         {
           "type":"menu",
           "label":"Large Shrink Height",
-          "commandId": "LargeShrinkHeight"
+          "commandId": "LargeShrinkHeight",
+          "shortcut": {
+            "win": "Ctrl+alt+Shift+8"
+          }
         },
         {
           "type":"menu",
           "label":"Large Extend Width",
-          "commandId": "LargeExtendWidth"
+          "commandId": "LargeExtendWidth",
+          "shortcut": {
+            "win": "Ctrl+alt+Shift+6"
+          }
         },
         {
           "type":"menu",
           "label":"Large Extend Height",
-          "commandId": "LargeExtendHeight"
+          "commandId": "LargeExtendHeight",
+          "shortcut": {
+            "win": "Ctrl+alt+Shift+2"
+          }
         },
         {
           "type": "menu",
